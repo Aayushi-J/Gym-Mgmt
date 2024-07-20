@@ -1,0 +1,405 @@
+<html>
+<head>
+<title> Doctors</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel = "icon" href = "http://localhost/scoopism/logo.jpg"
+        type = "image/x-icon">
+<style>
+  :root {
+  --surface-color: #fff;
+  --curve: 40;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1
+{
+  color:#ffffff;
+  font-family: 'Times New Roman';
+  text-decoration: underline;
+  text-decoration-color: #11aaaa;
+  font-size:250%;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 4rem 5vw;
+  padding: 0;
+  list-style-type: none;
+
+}
+
+.card {
+  position: relative;
+  display: block;
+  height: 100%;  
+  border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
+  background-color: #220000
+}
+
+.card__image {      
+  width: 100%;
+  height: auto;
+}
+
+.card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;      
+  border-radius: calc(var(--curve) * 1px);    
+  background-color: #330000;      
+  transform: translateY(100%);
+  transition: .2s ease-in-out;
+}
+
+.card:hover .card__overlay {
+  transform: translateY(0);
+}
+
+.card__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  padding: 2em;
+  border-radius: calc(var(--curve) * 1px) 0 0 0;    
+  background-color: #bbbbbb;
+  transform: translateY(-100%);
+  transition: .2s ease-in-out;
+}
+
+.card__arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;      
+  z-index: 1;
+}
+
+.card__arc path {
+  fill: #006600;
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}       
+
+.card:hover .card__header {
+  transform: translateY(0);
+}
+
+.card__thumb {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;      
+  border-radius: 50%;      
+}
+
+.card__title {
+  font-size: 1em;
+  margin: 0 0 .3em;
+  color: #000000;
+}
+
+.card__tagline {
+  display: block;
+  margin: 1em 0;
+  font-family: "MockFlowFont";  
+  font-size: .8em; 
+  color: #D7BDCA;  
+}
+
+.card__status {
+  font-size: .8em;
+  color: #000000;
+}
+
+.card__description {
+  padding: 0 2em 2em;
+  margin: 0;
+  color: #D7BDCA;
+  font-family: "MockFlowFont";   
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}    
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 10px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+  </style>
+
+</head>
+<body bgcolor="#000000">
+  <h1 align="center">OUR DOCTORS</h1>
+  <div class="wrap">
+   <div class="search">
+      <input type="text" class="searchTerm" placeholder="Enter your BMI" id="myFilter" onkeyup="myFunction()">
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button>
+   </div>
+</div>
+
+<ul class="cards" id="myProducts">
+  <li>
+    <a href="https://www.kauveryhospital.com/doctors/salem" class="card">
+      <img src="http://localhost/scoopism/d3.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+          <img class="card__thumb" src="http://localhost/scoopism/lg2.jpg" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">DR. RUPALI SINHA</h3>            
+            <span class="card__status">BMI RANGE:34..35..36..37</span>
+          </div>
+        </div>
+        <p class="card__description">Age: 43<br>Experience: 9 yrs<br> Qualification: MBBS, Paed.<br> Contact:9878432243</p>
+      </div>
+    </a>      
+  </li>
+  <li>
+    <a href="https://www.kauveryhospital.com/doctors/salem" class="card" id="card">
+      <img src="http://localhost/scoopism/d12.jpg" class="card__image" alt="" />
+      <div class="card__overlay">        
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+          <img class="card__thumb" src="http://localhost/scoopism/lg3.png" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">DR. KISHAN LAL</h3>
+            <span class="card__status">BMI RANGE:15..16..17..18</span>
+          </div>
+        </div>
+        <p class="card__description">Age: 37<br>Experience: 6 yrs<br> Qualification: MBBS, MD<br> Contact:9878123243</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.kauveryhospital.com/doctors/salem" class="card" id="card">
+      <img src="http://localhost/scoopism/d11.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+          <img class="card__thumb" src="http://localhost/scoopism/lg4.jpg" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">DR. RAVI KUMAR</h3>
+            <span class="card__status">BMI RANGE:26..27..28..29</span>
+          </div>
+        </div>
+        <p class="card__description">Age: 52<br>Experience: 21 yrs<br> Qualification: MBBS, Gen MD<br> Contact:9746123243</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.kauveryhospital.com/doctors/salem" class="card" id="card">
+      <img src="http://localhost/scoopism/d9f.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+          <img class="card__thumb" src="http://localhost/scoopism/lg1.png" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">DR. MEENU KUMARI</h3>
+            <span class="card__status">BMI RANGE:35..36..37..38</span>
+          </div>          
+        </div>
+        <p class="card__description">Age: 45<br>Experience: 13 yrs<br> Qualification: MBBS<br> Contact:9878276143</p>
+      </div>
+    </a>
+  </li>    
+ <li>
+    <a href="https://www.kauveryhospital.com/doctors/salem" class="card">
+      <img src="http://localhost/scoopism/d8f.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+          <img class="card__thumb" src="http://localhost/scoopism/lg5.png" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">DR. ANJANA NUTAN</h3>            
+            <span class="card__status">BMI RANGE: 14..15..16..17..18</span>
+          </div>
+        </div>
+        <p class="card__description">Age: 29<br>Experience: 1 yr<br> Qualification: MBBS, MD Diet<br>Contact:9999923243</p>
+      </div>
+    </a>      
+  </li>
+  <li>
+    <a href="https://www.kauveryhospital.com/doctors/salem" class="card" id="card">
+      <img src="http://localhost/scoopism/d7.jpg" class="card__image" alt="" />
+      <div class="card__overlay">        
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+          <img class="card__thumb" src="http://localhost/scoopism/lg1.png" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">DR. MANISH VERMA</h3>
+            <span class="card__status">BMI RANGE:28..29..30..31</span>
+          </div>
+        </div>
+        <p class="card__description">Age: 39<br>Experience: 8 yrs<br> Qualification: MBBS, Ortho<br> Contact:9878887243</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.kauveryhospital.com/doctors/salem" class="card" id="card">
+      <img src="http://localhost/scoopism/d5.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+          <img class="card__thumb" src="http://localhost/scoopism/lg6.jpg" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">DR. SWAYAM SINGH</h3>
+            <span class="card__status">BMI RANGE:32..33..34..35</span>
+          </div>
+        </div>
+        <p class="card__description">Age: 56<br>Experience: 22 yrs<br> Qualification: MBBS, MD Gastro<br> Contact:9877423243</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.kauveryhospital.com/doctors/salem" class="card" id="card">
+      <img src="http://localhost/scoopism/d4.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+          <img class="card__thumb" src="http://localhost/scoopism/lg2.jpg" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">DR. MOHAN MISHRA</h3>
+            <span class="card__status">BMI RANGE:15..16..17..18</span>
+          </div>          
+        </div>
+        <p class="card__description">Age: 37<br>Experience: 6 yrs<br> Qualification: MBBS, MD Nephro<br> Contact:9878586743</p>
+      </div>
+    </a>
+  </li> 
+   <li>
+    <a href="https://www.kauveryhospital.com/doctors/salem" class="card">
+      <img src="http://localhost/scoopism/d2.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+          <img class="card__thumb" src="http://localhost/scoopism/lg4.jpg" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">DR. MRIDUL K</h3>            
+            <span class="card__status">BMI RANGE:25..26..27..28</span>
+          </div>
+        </div>
+        <p class="card__description">Age: 60<br>Experience: 31 yrs<br> Qualification: MBBS, MD Neuro<br> Contact:9873961043</p>
+      </div>
+    </a>      
+  </li>
+  <li>
+    <a href="https://www.kauveryhospital.com/doctors/salem" class="card" id="card">
+      <img src="http://localhost/scoopism/d1.jpg" class="card__image" alt="" />
+      <div class="card__overlay">        
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+          <img class="card__thumb" src="http://localhost/scoopism/lg3.png" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">DR.DEEPA THOMAS</h3>
+            <span class="card__status">BMI RANGE:34..35..36..37</span>
+          </div>
+        </div>
+        <p class="card__description">Age: 47<br>Experience: 17 yrs<br> Qualification: MBBS, MD Rheum<br> Contact:9886703243</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.kauveryhospital.com/doctors/salem" class="card" id="card">
+      <img src="http://localhost/scoopism/d13.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+          <img class="card__thumb" src="http://localhost/scoopism/lg5.png" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">DR. SALEM SHAH</h3>
+            <span class="card__status">BMI RANGE:15..16..17..18</span>
+          </div>
+        </div>
+        <p class="card__description">Age: 41<br>Experience: 11 yrs<br> Qualification: MBBS, MD Cardio<br> Contact:9878189673</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.kauveryhospital.com/doctors/salem" class="card" id="card">
+      <img src="http://localhost/scoopism/d14.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+          <img class="card__thumb" src="http://localhost/scoopism/lg6.jpg" alt="" />
+          <div class="card__header-text">
+            <h3 class="card__title">DR. ANOOP BARUA</h3>
+            <span class="card__status">BMI RANGE:27..28..29..30</span>
+          </div>          
+        </div>
+        <p class="card__description">Age: 44<br>Experience: 14 yrs<br> Qualification: MBBS, MD Gen<br> Contact:9878000243</p>
+      </div>
+    </a>
+  </li> 
+</ul>
+<script>
+  function myFunction() {
+  var input, filter, cards, cardContainer, title, i;
+  input = document.getElementById("myFilter");
+  filter = input.value.toUpperCase();
+  cardContainer = document.getElementById("myProducts");
+  cards = cardContainer.getElementsByClassName("card");
+  for (i = 0; i < cards.length; i++) {
+    title = cards[i].querySelector(".card__status");
+    if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+      cards[i].style.display = "";
+    } else {
+      cards[i].style.display = "none";
+    }
+  }
+}
+
+  </script>
+</body>
+<html>
